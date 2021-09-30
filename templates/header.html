@@ -1,0 +1,176 @@
+{%load static%}
+{% load cart_tag %}
+<!-- Begin Header Area -->
+{% load ecomtag %}
+{%ecom_cat as category%}
+<header>
+    <!-- Begin Header Top Area -->
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Header Top Left Area -->
+                <div class="col-lg-3 col-md-4">
+                    <div class="header-top-left">
+                        <ul class="phone-wrap">
+                            <li><span>Telephone Enquiry:</span><a href="#"> {{setting.phone}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Header Top Left Area End Here -->
+                <!-- Begin Header Top Right Area -->
+                <div class="col-lg-9 col-md-8">
+                    <div class="header-top-right">
+                        <ul class="ht-menu">
+                            <!-- Begin Setting Area -->
+                            <li>
+                                <div class="ht-setting-trigger"><span>Account</span></div>
+                                <div class="setting ht-setting">
+                                    <ul class="ht-setting-list">
+
+                                        {% if user.id is not None %}
+                                        <li><a href="{%url 'userprofile'%}">Hi, {{request.user.username}}</a></li>
+                                        <li><a href="{%url 'user_logout'%}">Logout</a></li>
+
+
+                                        {% else %}
+
+
+                                        <li><a href="{%url 'user_login'%}">Login</a></li>
+                                        <li><a href="{%url 'user_register'%}">Register</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </li>
+                            <!-- Setting Area End Here -->
+                            <!-- Begin Currency Area -->
+                            <li>
+                                <span class="">Currency :</span>
+                                <div class=""><span>BDT &#2547;</span></div>
+
+                            </li>
+                            <!-- Currency Area End Here -->
+                            <!-- Begin Language Area -->
+                            <li>
+                                <span class="">Language :</span>
+                                <div class=""><span>English</span></div>
+
+                            </li>
+                            <!-- Language Area End Here -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- Header Top Right Area End Here -->
+            </div>
+        </div>
+    </div>
+    <!-- Header Top Area End Here -->
+    <!-- Begin Header Middle Area -->
+    <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Header Logo Area -->
+                <div class="col-lg-3">
+                    <div class="logo pb-sm-30 pb-xs-30">
+                        <a href="{%url 'home'%}">
+                            <img src="{{setting.icon.url}}" style="height: 70px;width: 150px; padding-bottom: 20px;"
+                                alt="">
+                        </a>
+                    </div>
+                </div>
+                <!-- Header Logo Area End Here -->
+
+                <!-- Begin Header Middle Right Area -->
+                <div class="col-lg-7 pl-0 ml-sm-15 ml-xs-15">
+                    <form action="{% url 'searchview' %}" method="GET">
+
+                        <div class="input-group">
+                            <input name="search" type="text" class="form-control" placeholder="Search here" />
+                            <button class="btn btn-warning" type="submit" id="button-addon2">Search</button>
+                        </div>
+
+
+                    </form>
+                </div>
+                <!--  Begin Header Middle Searchbox Area 
+                    
+                    <!-- Header Middle Searchbox Area End Here -->
+                <!-- Begin Header Middle Right Area -->
+                <div class="header-middle-right">
+                    <ul class="hm-menu">
+                        <!-- Begin Header Middle Wishlist Area -->
+                        <!--     <li class="hm-wishlist">
+                                <a href="wishlist.html">
+                                    <span class="cart-item-count wishlist-item-count">0</span>
+                                    <i class="fa fa-heart-o"></i>
+                                </a>
+                            </li>
+                            <!-- Header Middle Wishlist Area End Here -->
+                        <!-- Begin Header Mini Cart Area -->
+
+
+
+
+                        <div>
+                            <li class="nav-item">
+
+
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'cart' %}" class="nav-link">
+                                    <i class="fa fa-shopping-cart" style="font-size:24px"></i> Cart
+                                    <span class="badge badge-light">{{ request.user | cart_total }}</span>
+                                    {% else %}
+                                    <a href="{% url 'user_login' %}" class="nav-link">
+                                        <i class="fa fa-shopping-cart" style="font-size:24px"></i> Cart
+
+                                        {% endif %}
+                                    </a>
+
+
+                        </div>
+                </div>
+            </div>
+            </li>
+            <!-- Header Mini Cart Area End Here -->
+            </ul>
+        </div>
+        <!-- Header Middle Right Area End Here -->
+    </div>
+    <!-- Header Middle Right Area End Here -->
+    </div>
+    </div>
+    </div>
+    <!-- Header Middle Area End Here -->
+    <!-- Begin Header Bottom Area -->
+    <div class="header-bottom header-sticky d-none d-lg-block d-xl-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Begin Header Bottom Menu Area -->
+                    <div class="hb-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="{%url 'home'%}">Home</a></li>
+                                <li><a href="{%url 'about'%}">About Us</a></li>
+                                <li><a href="{%url 'contact_dat'%}">Contact</a></li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header Bottom Area End Here -->
+    <!-- Begin Mobile Menu Area -->
+    <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+        <div class="container">
+            <div class="row">
+                <div class="mobile-menu">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Menu Area End Here -->
+</header>
+<!-- Header Area End Here -->
