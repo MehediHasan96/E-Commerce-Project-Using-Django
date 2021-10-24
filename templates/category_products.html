@@ -94,16 +94,41 @@
                                                       {% endfor %}
                                             </div>
                                         </div>
+                                        
                                     </div>
                                    
                                   
                                 </div>
+
+                               
                             </div>
                             <!-- shop-products-wrapper end -->
                         </div>
+                       
                     </div>
                 </div>
+                <div style="margin-left: 650px;">
+                    <ul class="pagination">
+                    {% if product_cat.has_previous %}
+                      <li class="page-item"><a class="page-link" href="?page={{product_cat.previous_page_number}}">&laquo;</a></li>
+                      {% endif %}
+                      {% for p in product_cat.paginator.page_range %}
+                      {% if product_cat.number == p %}
+                      <li class="page-item active"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+                      {% else %}
+                      <li class="page-item"><a class="page-link" href="?page={{p}}">{{p}}</a></li>
+                      {% endif %}
+                      {% endfor %}
+                      {% if product_cat.has_next %}
+                      <li class="page-item"><a class="page-link" href="?page={{product_cat.next_page_number}}">&raquo;</a></li>
+                      {% endif %}
+                    </ul>
+                  
+                  </div>
             </div>
+
+          
+              
        {% endblock another_content %}
 
 

@@ -3,6 +3,7 @@ from EcomApp.models import Setting, ContactMessage, ContactForm
 from django.contrib import messages
 from Product.models import Product, Images, Category, Comment
 from OrderApp.models import ShopCart
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def Home(request):
@@ -99,11 +100,20 @@ def category_product(request, id, slug):
     category = Category.objects.all()
     setting = Setting.objects.get(id=1)
     sliding_images = Product.objects.all().order_by('id')[:2]
-    prouct_cat = Product.objects.filter(category_id=id)
+    product_cat_list = Product.objects.filter(category_id=id)
+    paginator = Paginator(product_cat_list, 3)
+    page = request.GET.get('page')
+    try:
+        product_cat = paginator.page(page)
+    except PageNotAnInteger:
+        product_cat = paginator.page(1)
+
+    except EmptyPage:
+        product_cat = paginator.page(paginator.num_pages)
     context = {
         'category': category,
         'setting': setting,
-        'product_cat': prouct_cat,
+        'product_cat': product_cat,
         'sliding_images': sliding_images,
     }
     return render(request, 'category_products.html', context)
