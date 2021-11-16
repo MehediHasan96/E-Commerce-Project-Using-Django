@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'EcomApp',
     'Product',
     'OrderApp',
-    'UserApp',
+    'UserApp.apps.UserappConfig',
     'mptt',
     'crispy_forms',
     'django_cleanup.apps.CleanupConfig',
+    'easy_thumbnails',
 
 
 ]

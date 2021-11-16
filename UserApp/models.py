@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 
@@ -43,7 +45,6 @@ class UserProfile(models.Model):
 			if value is None or value=='':
 				return False
 		return True		
-
 
 
         	
