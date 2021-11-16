@@ -1,6 +1,6 @@
 # E-commerce
 
-A web application implemented using Python/Django(MVT structure).
+A web application implemented using Python/Django (MVT structure).
 
 
 
@@ -21,4 +21,6 @@ A web application implemented using Python/Django(MVT structure).
  * Import database MySQL Workbench or phpMyAdmin
  * Run your local machine or Create a virtual environment.
  * pip install -r requirements.txt
+ * python manage.py makemigrations
+ * python manage.py migrate
  * python manage.py runserver
